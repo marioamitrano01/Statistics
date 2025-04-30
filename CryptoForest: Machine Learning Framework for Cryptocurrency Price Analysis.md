@@ -1,16 +1,23 @@
-# CryptoForest: Machine Learning Framework for Cryptocurrency Price Analysis
+# Crypto Price Prediction Framework
 
-A machine learning framework for retrospective analysis and model evaluation on cryptocurrency price data.
+A machine learning pipeline for cryptocurrency price forecasting with uncertainty estimation.
 
 ## Overview
 
-This project implements a comprehensive backtesting system for cryptocurrency price modeling using machine learning techniques. It evaluates how different Random Forest models perform on historical BTC/USDT data through feature engineering, model training, and comparative analysis.
+This framework fetches historical cryptocurrency data, engineers technical features, trains multiple predictive models, and generates price forecasts with confidence intervals.
 
+## Machine Learning Techniques
 
-### Model Selection Rationale
+- **Ensemble Methods**: 
+  - Random Forest: Uses tree-based ensemble learning with bagging (bootstrap aggregation)
+  - Gradient Boosting: Implements sequential ensemble learning with gradient descent optimization
 
-Random Forest models were chosen for their:
-- Robustness to overfitting in noisy financial data
-- Ability to capture non-linear relationships
-- Built-in feature importance analysis
-- Ensemble-based uncertainty estimation
+- **Uncertainty Quantification**:
+  - For RF: Bootstrap sampling from multiple decision trees
+  - For GBM: Weight-calibrated variance estimation from boosted trees
+
+- **Feature Engineering**:
+  - Technical indicators (RSI, MACD, Bollinger Bands)
+  - Time series decomposition with Fourier analysis
+  - Cyclical time encoding with trigonometric functions
+  - Rolling window statistics with multiple lookback periods
