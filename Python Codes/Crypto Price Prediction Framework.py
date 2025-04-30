@@ -25,13 +25,11 @@ def timer(func):
 class CryptoDataFetcher:
 
     def __init__(self, exchange_name='binance'):
-        """Initialize with configurable exchange"""
         self.exchange = getattr(ccxt, exchange_name)({'enableRateLimit': True})
         self.data_cache = {}  
     @timer
     def fetch_ohlcv(self, symbol: str, timeframe: str = '1h', limit: int = 1000, 
                     since: Optional[int] = None) -> pd.DataFrame:
-        """Fetch OHLCV data with additional parameters and caching"""
         cache_key = f"{symbol}_{timeframe}_{limit}_{since}"
         
         if cache_key in self.data_cache:
@@ -58,7 +56,6 @@ class CryptoDataFetcher:
 
     @timer
     def fetch_market_data(self, symbol: str) -> Dict[str, Any]:
-        """Fetch additional market data like order book, trades"""
         try:
             market_data = {}
             market_data['orderbook'] = self.exchange.fetch_order_book(symbol)
@@ -77,7 +74,6 @@ class FeatureEngineer:
                         lags: List[int] = [1, 24, 168],
                         windows: List[int] = [24, 72, 168],
                         include_fourier: bool = True) -> pd.DataFrame:
-        """Create features with additional time series components"""
         data = df.copy()
         
         data['log_return'] = np.log(data['close'] / data['close'].shift(1).replace(0, np.nan))
