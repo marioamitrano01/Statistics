@@ -58,7 +58,6 @@ class ConfidenceIntervalUnknownVariance:
 
         self._mean = statistics.mean(self.sample)
         self._s2 = self._calculate_s2()
-        # S^2_c = scaled sample variance = (N / (N-1)) * S^2
         self._s2_c = (self.n / self.df) * self._s2
         self._s_c = np.sqrt(self._s2_c)
 
@@ -130,7 +129,7 @@ class ConfidenceIntervalUnknownVariance:
     @time_method
     def display_results(self) -> None:
         
-        print("= Advanced Confidence Interval Results =")
+        print(" Advanced Confidence Interval Results ")
         print(f"Sample Size (n):               {self.n}")
         print(f"Sample Mean:                   {self._mean:.4f}")
         print(f"Unscaled S^2:                  {self._s2:.4f}")
@@ -143,7 +142,6 @@ class ConfidenceIntervalUnknownVariance:
         print("\n--- Normality Test (Shapiro-Wilk) ---")
         print(f" W-statistic: {self._shapiro_stat:.4f}")
         print(f" p-value:     {self._shapiro_p_value:.4g}")
-        print("------")
 
     @time_method
     def plot_sample_and_intervals(self) -> None:
