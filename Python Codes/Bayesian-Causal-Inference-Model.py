@@ -32,12 +32,12 @@ class BayesianCausalInference:
         self.sigma = sigma
         self.seed = seed
 
-        self.trt = None       # Treatment indicator (0 for control, 1 for treatment)
-        self.conf = None      # Confounding variable
-        self.y = None         # Observed outcome
+        self.trt = None       
+        self.conf = None      
+        self.y = None         
 
-        self.trace = None     # MCMC trace (ArviZ InferenceData)
-        self.model = None     # PyMC model
+        self.trace = None    
+        self.model = None     
 
         np.random.seed(self.seed)
 
