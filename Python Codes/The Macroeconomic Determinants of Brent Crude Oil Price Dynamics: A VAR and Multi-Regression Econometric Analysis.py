@@ -29,7 +29,7 @@ series_ids = {
 }
 
 start_date = '2015-01-01'
-end_date = datetime.now().strftime('%Y-%m-%d')  # Today
+end_date = datetime.now().strftime('%Y-%m-%d')  
 
 def fetch_fred_data(series_ids, start_date, end_date):
     
@@ -289,7 +289,7 @@ def analyze_impact_of_variables(data):
     print("Analyzing impact of variables on Brent oil prices...")
     
 
-    lag_periods = [1, 3, 6, 12]  # 1, 3, 6, and 12 month lags
+    lag_periods = [1, 3, 6, 12]  
     
 
     df = data.copy()
